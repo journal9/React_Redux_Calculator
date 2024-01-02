@@ -1,13 +1,17 @@
-import classess from '../css-modules/Display.module.css';
-import { useContext } from 'react';
-import { CalcContext } from '../contexts/CalcContext';
+import { useSelector } from "react-redux";
+import classess from "../css-modules/Display.module.css";
 
-function Display(){
-    const { calc } =useContext(CalcContext);
+function Display() {
+  const { calValue } = useSelector((store) => ({
+    res: store.res,
+    num: store.num,
+  }));
 
-    return(
-        <div className={classess.display_screen}>{calc.num ? calc.num : calc.res}</div>
-    )
+  return (
+    <div className={classess.display_screen}>
+      {num ? num : res}
+    </div>
+  );
 }
 
 export default Display;

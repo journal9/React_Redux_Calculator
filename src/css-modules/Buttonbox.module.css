@@ -1,0 +1,13 @@
+/* .button_box{
+    height: 80%;
+    margin: 0.5rem;
+    background-color: rgb(57, 56, 56);
+    display: flex;
+    flex-wrap: wrap;
+} */
+
+.button_box{
+    background-color: rgb(79, 78, 78);
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+}

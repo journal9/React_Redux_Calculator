@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import calcSlice from "./calcStore";
 
 const calcStore = configureStore(
     {

@@ -35,9 +35,9 @@ function Button({value}){
         '=':dispatch(calActions.equals())
        }
        if(methodMap[value]) {
-        return methodMap[value]()
+        return methodMap[value]
       } else {
-        return dispatch(calActions.numberClick())
+        return dispatch(calActions.numberClick(value))
       }
     }
 

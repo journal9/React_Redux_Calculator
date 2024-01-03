@@ -21,7 +21,7 @@ const calcSlice = createSlice({
         },
         sign:(state,action)=>{
             state.num=0;
-            state.res=!calc.res && calc.num? calc.num:calc.res;
+            state.res=!state.res && state.num? state.num:state.res;
             state.oper=action.payload;
         },
         reset:(state)=>{
@@ -39,7 +39,7 @@ const calcSlice = createSlice({
         equals:(state)=>{
             if(state.res!==0 && state.num!==0){
                 let MathOp=(a,b,sign)=>{
-                    console.log(calc)
+                    console.log(state)
                     let calMath={
                         '+':(a,b)=>a+b,
                         '-':(a,b)=>a-b,
@@ -51,6 +51,7 @@ const calcSlice = createSlice({
                 state.res=MathOp(state.res,state.num,state.oper);
                 state.num=0;
                 state.oper=""
+                console.log(state)
         }
         }
     }

@@ -2,15 +2,11 @@ import { useSelector } from "react-redux";
 import classess from "../css-modules/Display.module.css";
 
 function Display() {
-  const calValue  = useSelector((store) => ({
-    res: store.res,
-    num: store.num,
-  }));
-  console.log(calValue)
+  const {res, num}  = useSelector((state) => state.calc );
 
   return (
     <div className={classess.display_screen}>
-      {calValue.num ? calValue.num : calValue.res}
+      {num ? num : res}
     </div>
   );
 }

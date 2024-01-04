@@ -27,9 +27,9 @@ function Button({value}){
        const methodMap={
         'C':dispatch(calActions.reset()),
         '+':dispatch(calActions.sign(value)),
-        '-':dispatch(calActions.sign()),
-        'x':dispatch(calActions.sign()),
-        '/':dispatch(calActions.sign()),
+        '-':dispatch(calActions.sign(value)),
+        'x':dispatch(calActions.sign(value)),
+        '/':dispatch(calActions.sign(value)),
         '.':dispatch(calActions.point()),
         '<--':dispatch(calActions.back()),
         '=':dispatch(calActions.equals())

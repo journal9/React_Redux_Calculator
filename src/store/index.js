@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import calcSlice from "./calcStore";
+import calcReducer from "./calcStore";
 
 const calcStore = configureStore(
     {
         reducer:{
-            calculator : calcSlice.reducer
+            calc : calcReducer
         }
     }
 )

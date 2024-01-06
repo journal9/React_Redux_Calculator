@@ -1,8 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice,current } from "@reduxjs/toolkit";
 
 const initialState = {
-    num:9,
-    res:5,
+    num:"",
+    res:"",
     oper:"",
 }
 const calcSlice = createSlice({
@@ -13,39 +13,36 @@ const calcSlice = createSlice({
             let inp_num = action.payload.toString()
             let numValue;
             if(inp_num==='0' && state.res===0 && state.num===0){
-                numValue='0';
+                numValue=0;
             }
             else{
-                numValue=Number(state.num + inp_num)
-            console.log("state.num",state.num)
-            return {
-                ...state,
-                num: numValue
-              };
+                numValue=Number(String(state.num) + String(inp_num))
+            console.log("numvalue",numValue)
+            state.num=numValue
             }
         },
         sign:(state,action)=>{
+            console.log(current(state))
             console.log("payload",action.payload)
-            console.log("num",state.num)
-            state.num=0;
-            state.res=!state.res && state.num? state.num:state.res;
-            state.oper=action.payload;
-            console.log("res",state.res)
+            let ress=!state.res && state.num? state.num:state.res;
+            return {num:0,res:ress,oper:action.payload}
         },
-        reset:(state)=>{
-            state.num=0;
-            state.res=0;
-            state.oper="";
+        reset:()=>{
+            return {num:0,res:0,oper:""}
         },
         back:(state)=>{
             let number  = state.num.toString();
-            state.num = Number(number.substring(0,number.length-1));
+            // state.num = Number(number.substring(0,number.length-1));
+            return{
+                ...state,
+                num:Number(number.substring(0,number.length-1))
+            }
         },
         point:(state)=>{
             state.num = state.num.toString().includes('.') ? state.num : state.num + '.';
         },
         equals:(state)=>{
-            console.log(state.calculator)
+            console.log(current(state))
             if(state.res!==0 && state.num!==0){
                 let MathOp=(a,b,sign)=>{
                     console.log(state)
@@ -60,6 +57,7 @@ const calcSlice = createSlice({
                 state.res=MathOp(state.res,state.num,state.oper);
                 state.num=0;
                 state.oper=""
+                // return {num:0,res:ress,oper:""}
         }
         }
     }

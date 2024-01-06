@@ -24,21 +24,19 @@ function Button({value}){
     }
 
     const handleBtnClick=()=>{ 
-       const methodMap={
-        'C':dispatch(calActions.reset()),
-        '+':dispatch(calActions.sign(value)),
-        '-':dispatch(calActions.sign(value)),
-        'x':dispatch(calActions.sign(value)),
-        '/':dispatch(calActions.sign(value)),
-        '.':dispatch(calActions.point()),
-        '<--':dispatch(calActions.back()),
-        '=':dispatch(calActions.equals())
-       }
-       if(methodMap[value]) {
-        return methodMap[value]
-      } else {
-        return dispatch(calActions.numberClick(value))
-      }
+        if(value==='C'){
+            dispatch(calActions.reset())
+        }else if(value==='+' || value==='-' || value==='x' || value==='/'){
+            dispatch(calActions.sign(value))
+        }else if(value==='.'){
+            dispatch(calActions.point())
+        }else if(value==='<--'){
+            dispatch(calActions.back())
+        }else if(value==='='){
+            dispatch(calActions.equals())
+        }else{
+            dispatch(calActions.numberClick(value))
+        }
     }
 
     return(

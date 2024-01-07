@@ -45,7 +45,6 @@ const calcSlice = createSlice({
             console.log(current(state))
             if(state.res!==0 && state.num!==0){
                 let MathOp=(a,b,sign)=>{
-                    console.log(state)
                     let calMath={
                         '+':(a,b)=>a+b,
                         '-':(a,b)=>a-b,
